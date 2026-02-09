@@ -1,0 +1,5 @@
+[web.app]
+title = "AI-LNP Agent"
+
+[web.watcher]
+watch_path = ["src"]

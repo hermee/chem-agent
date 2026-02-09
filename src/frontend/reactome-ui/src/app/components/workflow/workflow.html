@@ -1,0 +1,25 @@
+<div class="p-6">
+  <h2 class="text-xl font-bold text-slate-800 mb-2">🔄 Agent Workflow</h2>
+  <p class="text-sm text-slate-500 mb-6">LangGraph pipeline for ionizable lipid analysis</p>
+
+  <div class="max-w-2xl mx-auto space-y-4">
+    @for (step of steps; track step.id) {
+      <div class="flex items-start gap-4">
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold text-white"
+            [style.background]="step.color">{{ step.icon }}</div>
+          @if (!$last) {
+            <div class="w-0.5 h-8 bg-slate-200 mt-2"></div>
+          }
+        </div>
+        <div class="flex-1 bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md transition-all">
+          <h3 class="font-semibold text-slate-800">{{ step.title }}</h3>
+          <p class="text-sm text-slate-500 mt-1">{{ step.description }}</p>
+          @if (step.parallel) {
+            <span class="inline-block mt-2 text-xs px-2 py-1 rounded-md bg-purple-50 text-purple-600 font-medium">⚡ Runs in parallel</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

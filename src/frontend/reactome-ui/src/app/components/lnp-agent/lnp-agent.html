@@ -1,0 +1,77 @@
+<div class="flex flex-col h-full p-6 overflow-auto">
+  <div class="mb-6">
+    <h2 class="text-xl font-bold text-slate-800">🤖 AI-LNP Agent</h2>
+    <p class="text-sm text-slate-500">Analyze ionizable lipid candidates — paste a SMILES to get molecular scores and structure</p>
+  </div>
+
+  <!-- Input -->
+  <div class="mb-4">
+    <div class="flex gap-3">
+      <input [(ngModel)]="smiles"
+        (keydown.enter)="analyze(smiles)"
+        placeholder="Enter SMILES (e.g. CCCCCCCCCCOC(=O)CC(CC(=O)OCCCCCCCCCC)N(C)C)"
+        class="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 outline-none text-sm font-mono transition-all"
+        [disabled]="loading()" />
+      <button (click)="analyze(smiles)"
+        [disabled]="loading() || !smiles.trim()"
+        class="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium text-sm hover:from-emerald-600 hover:to-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md">
+        Analyze
+      </button>
+    </div>
+  </div>
+
+  <!-- Example molecules -->
+  <div class="mb-6 flex flex-wrap gap-2">
+    <span class="text-xs text-slate-400 py-1">Try:</span>
+    @for (ex of examples; track ex.name) {
+      <button (click)="analyze(ex.smiles)"
+        class="text-xs px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 transition-all">
+        {{ ex.name }}
+      </button>
+    }
+  </div>
+
+  <!-- Loading -->
+  @if (loading()) {
+    <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+      <div class="flex gap-1">
+        <div class="w-2 h-2 rounded-full bg-emerald-400 animate-bounce" style="animation-delay: 0ms"></div>
+        <div class="w-2 h-2 rounded-full bg-emerald-400 animate-bounce" style="animation-delay: 150ms"></div>
+        <div class="w-2 h-2 rounded-full bg-emerald-400 animate-bounce" style="animation-delay: 300ms"></div>
+      </div>
+      <span class="text-sm text-slate-500">Running RDKit analysis...</span>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error()) {
+    <div class="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">{{ error() }}</div>
+  }
+
+  <!-- Results -->
+  @if (result(); as r) {
+    <div class="space-y-6">
+      <!-- Structure -->
+      <div class="bg-white rounded-xl border border-slate-200 p-6">
+        <h3 class="text-sm font-semibold text-slate-700 mb-3">📐 2D Structure</h3>
+        <div class="flex justify-center bg-slate-50 rounded-lg p-4" [innerHTML]="safeSvg(r.svg)"></div>
+        <p class="mt-3 text-xs text-slate-400 font-mono break-all">{{ r.smiles }}</p>
+      </div>
+
+      <!-- Scores -->
+      <div class="bg-white rounded-xl border border-slate-200 p-6">
+        <h3 class="text-sm font-semibold text-slate-700 mb-4">📊 Molecular Properties</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+          @for (key of scoreKeys(); track key) {
+            <div class="score-card">
+              <div class="text-xs text-slate-400 mb-1">{{ scoreLabels[key] }}</div>
+              <div class="text-xl font-bold" [style.color]="scoreColor(key, r.scores[key])">
+                {{ r.scores[key] }}
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

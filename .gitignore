@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[oc]
+*.egg-info
+.venv/
+
+# Environment
+.env
+
+# Data (large files)
+data/faiss_lnp_index/
+data/lnp_data/filter-smiles-refine.pkl
+data/lnp_data/filtered_building_blocks.csv
+data/papers/**/*.pdf
+
+# Node.js / Angular
+node_modules/
+.angular/
+src/frontend/reactome-ui/dist/
+
+# Rust / Dioxus
+standalone-desktop/target/
+standalone-desktop/frontend/
+standalone/target/
+standalone/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+wandb/
+outputs/
+checkpoints/
+logs/
+
+# Misc
+downloads/
+uv.lock
+
+# Rust lock files
+*.lock
+!package-lock.json
