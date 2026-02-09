@@ -1,12 +1,16 @@
 #!/bin/bash
-# Build the standalone desktop app
-# Run this on macOS (requires Rust: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh)
+# Build the standalone desktop app with Dioxus
+# Run this on macOS/Linux/Windows (requires Rust)
 set -e
 cd "$(dirname "$0")"
-echo "🔨 Building LNP Desktop App..."
+
+echo "🔨 Building LNP Desktop App (Dioxus cross-platform)..."
 cargo build --release
+
 echo ""
 echo "✅ Binary ready at: target/release/lnp-desktop"
 echo "   Run with: ./target/release/lnp-desktop"
 echo ""
-echo "⚠️  Make sure the backend is running on localhost:8000"
+echo "⚠️  Requirements:"
+echo "   - Backend running on localhost:8000"
+echo "   - Angular dev server on localhost:4200"

@@ -42,8 +42,9 @@ logs/
 
 # Misc
 downloads/
+
+# Python lock (uv)
 uv.lock
 
-# Rust lock files
-*.lock
-!package-lock.json
+# Keep Cargo.lock for applications
+# (Rust best practice: commit for binaries, ignore for libraries)
