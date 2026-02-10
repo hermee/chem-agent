@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="900" height="620" preserveAspectRatio="xMinYMin meet" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="900" height="620"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-620)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="900" height="620" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(97%,98%,98%); fill-rule: evenodd;"/>
+			<text x="288.20799999999997" y="575" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(5%,9%,16%); stroke:none;" transform="translate(0,1150) scale(1,-1)">Reactome LNP Agent — 7-Agent Workflow</text>
+			<text x="322.15999999999997" y="558" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,1116) scale(1,-1)">LangGraph StateGraph with conditional parallel execution</text>
+			<g transform="">
+				<rect x="375.0" y="530" width="150.0" height="50" rx="8" ry="8" style="stroke: rgb(0%,51%,78%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(87%,94%,99%); fill-rule: evenodd;"/>
+				<text x="414.635" y="555.0" style="font-family: Helvetica-Bold; font-size: 11px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,1110) scale(1,-1)">❓ User Query</text>
+			</g>
+			<path d="M 450,530 L 450,500 Z" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 500, 452.7259 506.4474, 447.2741 506.4474" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(27%,33%,41%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="375.0" y="450" width="150.0" height="50" rx="8" ry="8" style="stroke: rgb(0%,51%,78%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(87%,94%,99%); fill-rule: evenodd;"/>
+				<text x="406.9955" y="481.0" style="font-family: Helvetica-Bold; font-size: 11px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,962) scale(1,-1)">🔄 Rewrite Query</text>
+				<text x="403.808" y="465.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,930) scale(1,-1)">chat history → standalone</text>
+			</g>
+			<path d="M 450,450 L 450,420 Z" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 420, 452.7259 426.4474, 447.2741 426.4474" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(27%,33%,41%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="375.0" y="370" width="150.0" height="50" rx="8" ry="8" style="stroke: rgb(0%,51%,78%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(87%,94%,99%); fill-rule: evenodd;"/>
+				<text x="409.454" y="401.0" style="font-family: Helvetica-Bold; font-size: 11px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,802) scale(1,-1)">🧭 Router Agent</text>
+				<text x="401.676" y="385.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,770) scale(1,-1)">synthesis | lookup | general</text>
+			</g>
+			<path d="M 450,370 L 450,340 Z" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 340, 452.7259 346.4474, 447.2741 346.4474" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(27%,33%,41%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="375.0" y="290" width="150.0" height="50" rx="8" ry="8" style="stroke: rgb(0%,51%,78%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(87%,94%,99%); fill-rule: evenodd;"/>
+				<text x="404.856" y="321.0" style="font-family: Helvetica-Bold; font-size: 11px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,642) scale(1,-1)">🔍 FAISS Retrieve</text>
+				<text x="408.088" y="305.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,610) scale(1,-1)">top-8 → rerank → top-4</text>
+			</g>
+			<rect x="30" y="175" width="840" height="80" rx="10" ry="10" style="stroke: rgb(57%,77%,99%); stroke-linecap: butt; stroke-width: 1; fill: rgb(85%,91%,99%); fill-rule: evenodd; stroke-dasharray: 5, 3;"/>
+			<text x="40" y="243" style="font-family: Helvetica-Bold; font-size: 9px;fill: rgb(14%,38%,92%); stroke:none;" transform="translate(0,486) scale(1,-1)">⚡ Parallel Execution (synthesis queries)</text>
+			<g transform="">
+				<rect x="53.33333333333333" y="190" width="140.0" height="50" rx="8" ry="8" style="stroke: rgb(1%,58%,41%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(92%,99%,96%); fill-rule: evenodd;"/>
+				<text x="102.21833333333333" y="221.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,442) scale(1,-1)">Reaction</text>
+				<text x="99.46533333333332" y="205.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,410) scale(1,-1)">⚗️ SMARTS</text>
+			</g>
+			<text x="107.77333333333333" y="229.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,458) scale(1,-1)">Expert</text>
+			<path d="M 450,290 L 123.333333,240 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="123.3333 240, 130.119 238.2809, 129.2941 243.67" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="216.66666666666669" y="190" width="140.0" height="50" rx="8" ry="8" style="stroke: rgb(1%,58%,41%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(92%,99%,96%); fill-rule: evenodd;"/>
+				<text x="256.6616666666667" y="221.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,442) scale(1,-1)">Lipid Design</text>
+				<text x="262.1706666666667" y="205.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,410) scale(1,-1)">🧬 Retro+SAR</text>
+			</g>
+			<text x="271.1066666666667" y="229.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,458) scale(1,-1)">Expert</text>
+			<path d="M 450,290 L 286.666667,240 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="286.6667 240, 293.6296 239.2807, 292.0338 244.4938" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="380.0" y="190" width="140.0" height="50" rx="8" ry="8" style="stroke: rgb(85%,46%,2%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(99%,95%,78%); fill-rule: evenodd;"/>
+				<text x="417.765" y="221.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,442) scale(1,-1)">Generative AI</text>
+				<text x="430.836" y="205.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,410) scale(1,-1)">🤖 Gen+RL</text>
+			</g>
+			<text x="434.44" y="229.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,458) scale(1,-1)">Expert</text>
+			<path d="M 450,290 L 450,240 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 240, 452.7259 246.4474, 447.2741 246.4474" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="543.3333333333334" y="190" width="140.0" height="50" rx="8" ry="8" style="stroke: rgb(85%,46%,2%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(99%,95%,78%); fill-rule: evenodd;"/>
+				<text x="578.8783333333333" y="221.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,442) scale(1,-1)">Property Pred.</text>
+				<text x="595.2853333333334" y="205.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,410) scale(1,-1)">📊 ML+UQ</text>
+			</g>
+			<text x="597.7733333333334" y="229.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,458) scale(1,-1)">Expert</text>
+			<path d="M 450,290 L 613.333333,240 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="613.3333 240, 607.9662 244.4938, 606.3704 239.2807" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="706.6666666666667" y="190" width="140.0" height="50" rx="8" ry="8" style="stroke: rgb(48%,22%,92%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(95%,90%,100%); fill-rule: evenodd;"/>
+				<text x="753.6066666666668" y="221.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,442) scale(1,-1)">Literature</text>
+				<text x="748.2786666666667" y="205.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,410) scale(1,-1)">📚 PubMed/Web</text>
+			</g>
+			<text x="762.7766666666668" y="229.0" style="font-family: Helvetica-Bold; font-size: 10px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,458) scale(1,-1)">Scout</text>
+			<path d="M 450,290 L 776.666667,240 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="776.6667 240, 770.7059 243.67, 769.881 238.2809" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="350.0" y="80" width="200.0" height="55" rx="8" ry="8" style="stroke: rgb(86%,14%,14%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(99%,94%,94%); fill-rule: evenodd;"/>
+				<text x="417.33" y="113.5" style="font-family: Helvetica-Bold; font-size: 12px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,227) scale(1,-1)">Lead Agent</text>
+				<text x="389.604" y="97.5" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,195) scale(1,-1)">🧠 Supervisor — conflict resolution</text>
+			</g>
+			<path d="M 123.333333,190 L 450,135 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 135, 444.0946 138.7586, 443.1895 133.3824" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<path d="M 286.666667,190 L 450,135 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 135, 444.7596 139.6409, 443.0198 134.4742" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<path d="M 450,190 L 450,135 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 135, 452.7259 141.4474, 447.2741 141.4474" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<path d="M 613.333333,190 L 450,135 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 135, 456.9802 134.4742, 455.2404 139.6409" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<path d="M 776.666667,190 L 450,135 Z" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 135, 456.8105 133.3824, 455.9054 138.7586" style="stroke: rgb(58%,63%,72%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(58%,63%,72%); fill-rule: evenodd;"/>
+			<path d="M 450,80 L 450,50 Z" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 1.5;"/>
+			<polygon points="450 50, 452.7259 56.44743, 447.2741 56.44743" style="stroke: rgb(27%,33%,41%); stroke-linecap: butt; stroke-width: 0.5; fill: rgb(27%,33%,41%); fill-rule: evenodd;"/>
+			<g transform="">
+				<rect x="375.0" y="0" width="150.0" height="50" rx="8" ry="8" style="stroke: rgb(0%,51%,78%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(87%,94%,99%); fill-rule: evenodd;"/>
+				<text x="410.0535" y="31.0" style="font-family: Helvetica-Bold; font-size: 11px;fill: rgb(11%,16%,23%); stroke:none;" transform="translate(0,62) scale(1,-1)">📋 Final Answer</text>
+				<text x="421.148" y="15.0" style="font-family: Helvetica; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,30) scale(1,-1)">SSE → frontend</text>
+			</g>
+			<text x="278.96" y="280" style="font-family: Helvetica; font-size: 8px;fill: rgb(1%,58%,41%); stroke:none;" transform="translate(0,560) scale(1,-1)">synthesis →  all 5 experts</text>
+			<text x="530.0" y="280" style="font-family: Helvetica; font-size: 8px;fill: rgb(48%,22%,92%); stroke:none;" transform="translate(0,560) scale(1,-1)">lookup →  literature only</text>
+		</g>
+	</g>
+</svg>

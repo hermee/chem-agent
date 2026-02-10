@@ -56,4 +56,4 @@ def get_vectorstore() -> FAISS:
 
 
 vectorstore = get_vectorstore()
-retriever = vectorstore.as_retriever(search_kwargs={"k": 6})
+retriever = vectorstore.as_retriever(search_kwargs={"k": 8})

@@ -1,9 +1,11 @@
 """FastAPI backend for Reactome LNP Agent."""
 import json
-from fastapi import FastAPI
+import io
+from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, Response
 from pydantic import BaseModel
+from typing import Optional
 from rdkit import Chem
 from rdkit.Chem import QED, Descriptors, Crippen, rdMolDescriptors, rdChemReactions, RDConfig
 from rdkit.Chem.Draw import rdMolDraw2D
@@ -36,10 +38,12 @@ REACTIONS = [
 
 class ChatRequest(BaseModel):
     message: str
+    chat_history: Optional[str] = ""
 
 
 class QueryRequest(BaseModel):
     query: str
+    chat_history: Optional[str] = ""
 
 
 class SmilesRequest(BaseModel):
@@ -98,46 +102,102 @@ def analyze_smiles(req: SmilesRequest):
 
 @app.post("/api/query")
 def query_agent(req: QueryRequest):
-    result = run_agent(req.query)
+    result = run_agent(req.query, req.chat_history or "")
     return {
         "query": req.query,
-        "reaction_analysis": result["reaction_analysis"],
-        "design_rules_check": result["design_rules_check"],
-        "synthesis_plan": result["synthesis_plan"],
-        "final_answer": result["final_answer"],
+        "query_type": result.get("query_type", ""),
+        "reaction_analysis": result.get("reaction_analysis", ""),
+        "lipid_design_analysis": result.get("lipid_design_analysis", ""),
+        "generative_analysis": result.get("generative_analysis", ""),
+        "prediction_analysis": result.get("prediction_analysis", ""),
+        "literature_context": result.get("literature_context", ""),
+        "web_context": result.get("web_context", ""),
+        "final_answer": result.get("final_answer", ""),
     }
 
 
-@app.post("/api/chat")
-def chat_stream(req: ChatRequest):
-    """SSE streaming chat endpoint with real node-by-node progress."""
-    def generate():
-        node_status = {
-            "retrieve": "🔍 Retrieving relevant documents...",
-            "reaction_expert": "⚗️ Analyzing reaction templates...",
-            "design_rules": "📏 Checking design rules...",
-            "synthesis_planner": "🧪 Planning synthesis route...",
-            "final_answer": "📋 Generating final answer...",
-        }
+def _extract_file_text(filename: str, content: bytes) -> str:
+    """Extract text from uploaded files."""
+    name_lower = filename.lower()
+    if name_lower.endswith('.pdf'):
+        try:
+            import PyPDF2
+            reader = PyPDF2.PdfReader(io.BytesIO(content))
+            return "\n".join(page.extract_text() or "" for page in reader.pages)
+        except Exception:
+            return "[Could not extract PDF text]"
+    elif name_lower.endswith(('.txt', '.md', '.csv')):
+        return content.decode('utf-8', errors='replace')
+    elif name_lower.endswith(('.doc', '.docx')):
+        try:
+            import docx
+            doc = docx.Document(io.BytesIO(content))
+            return "\n".join(p.text for p in doc.paragraphs)
+        except Exception:
+            return "[Could not extract document text]"
+    return "[Unsupported file type]"
 
-        state = {
-            "query": req.message,
-            "retrieved_context": "",
-            "reaction_analysis": "",
-            "design_rules_check": "",
-            "synthesis_plan": "",
-            "final_answer": "",
-        }
 
-        # Stream graph execution node-by-node
+def _run_chat_stream(query: str, chat_history: str = ""):
+    """Shared SSE generator for chat endpoints."""
+    node_status = {
+        "rewrite_query": "🔄 Understanding your question...",
+        "router": "🧭 Classifying query type...",
+        "retrieve": "🔍 Retrieving relevant documents...",
+        "reaction_expert": "⚗️ Analyzing reaction templates...",
+        "lipid_design_expert": "🧬 Evaluating lipid design (retrosynthesis + SAR + rules)...",
+        "generative_ai_expert": "🤖 Assessing generative AI approaches...",
+        "property_prediction_expert": "📊 Evaluating property prediction models...",
+        "literature_search": "📚 Searching PubMed & PubChem...",
+        "web_search": "🌐 Searching the web...",
+        "lead_agent": "🧠 Lead agent reasoning over all evidence...",
+    }
+    state = {
+        "query": query,
+        "chat_history": chat_history,
+        "rewritten_query": "",
+        "query_type": "",
+        "retrieved_context": "",
+        "reaction_analysis": "",
+        "lipid_design_analysis": "",
+        "generative_analysis": "",
+        "prediction_analysis": "",
+        "literature_context": "",
+        "web_context": "",
+        "final_answer": "",
+        "error": "",
+    }
+    try:
         for event in graph.stream(state, stream_mode="updates"):
             for node_name in event:
                 if node_name in node_status:
                     yield f"data: {json.dumps({'type': 'status', 'step': node_name, 'message': node_status[node_name]})}\n\n"
                 state.update(event[node_name])
+    except Exception as e:
+        yield f"data: {json.dumps({'type': 'error', 'message': f'Agent error: {type(e).__name__}: {str(e)[:300]}'})}\n\n"
+    yield f"data: {json.dumps({'type': 'answer', 'content': state['final_answer'] or state.get('error', 'No response generated.')})}\n\n"
+    yield f"data: {json.dumps({'type': 'details', 'reaction_analysis': state['reaction_analysis'], 'lipid_design_analysis': state['lipid_design_analysis'], 'generative_analysis': state['generative_analysis'], 'prediction_analysis': state['prediction_analysis'], 'literature_context': state['literature_context'], 'web_context': state['web_context']})}\n\n"
+    yield "data: [DONE]\n\n"
 
-        yield f"data: {json.dumps({'type': 'answer', 'content': state['final_answer']})}\n\n"
-        yield f"data: {json.dumps({'type': 'details', 'reaction_analysis': state['reaction_analysis'], 'design_rules_check': state['design_rules_check'], 'synthesis_plan': state['synthesis_plan']})}\n\n"
-        yield "data: [DONE]\n\n"
 
-    return StreamingResponse(generate(), media_type="text/event-stream")
+@app.post("/api/chat")
+def chat_stream(req: ChatRequest):
+    """SSE streaming chat endpoint."""
+    return StreamingResponse(_run_chat_stream(req.message, req.chat_history or ""), media_type="text/event-stream")
+
+
+@app.post("/api/chat-with-files")
+async def chat_with_files(message: str = Form(""), chat_history: str = Form(""), files: list[UploadFile] = File([])):
+    """SSE streaming chat with file attachments."""
+    file_texts = []
+    for f in files:
+        content = await f.read()
+        text = _extract_file_text(f.filename or "", content)
+        if text.strip():
+            file_texts.append(f"--- File: {f.filename} ---\n{text}")
+
+    query = message
+    if file_texts:
+        query = "The user attached the following files:\n\n" + "\n\n".join(file_texts) + "\n\n" + ("User message: " + message if message.strip() else "Please analyze the attached files.")
+
+    return StreamingResponse(_run_chat_stream(query, chat_history), media_type="text/event-stream")

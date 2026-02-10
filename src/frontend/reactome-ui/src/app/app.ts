@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Sidebar } from './components/sidebar/sidebar';
 
 @Component({
@@ -11,4 +11,5 @@ import { Sidebar } from './components/sidebar/sidebar';
 })
 export class App {
   title = 'Reactome LNP Agent';
+  constructor(private router: Router) { this.router.navigateByUrl('/'); }
 }

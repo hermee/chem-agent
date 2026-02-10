@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ApiService } from '../../services/api';
+import { ConversationService } from '../../services/conversation';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,7 @@ export class Sidebar implements OnInit {
     { icon: '🔄', label: 'Workflow', route: '/workflow' },
   ];
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, public convService: ConversationService) {}
 
   ngOnInit() {
     this.api.getHealth().subscribe({

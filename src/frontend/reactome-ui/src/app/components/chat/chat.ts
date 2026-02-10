@@ -1,14 +1,8 @@
-import { Component, ViewChild, ElementRef, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, ChangeDetectorRef, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { marked } from 'marked';
 import { ApiService, ChatMessage } from '../../services/api';
-
-interface Conversation {
-  id: string;
-  title: string;
-  messages: ChatMessage[];
-  timestamp: number;
-}
+import { ConversationService } from '../../services/conversation';
 
 @Component({
   selector: 'app-chat',
@@ -17,17 +11,16 @@ interface Conversation {
   templateUrl: './chat.html',
   styleUrl: './chat.css',
 })
-export class Chat implements OnInit {
+export class Chat {
   @ViewChild('messageContainer') messageContainer!: ElementRef;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
-  conversations: Conversation[] = [];
-  currentConversationId: string | null = null;
   messages: ChatMessage[] = [];
   inputText = '';
   loading = false;
   statusMessage = 'Thinking...';
   expandedDetail = -1;
-  showHistory = false;
+  attachedFiles: File[] = [];
 
   sampleQueries = [
     'Design a 3-tail ionizable lipid with amine heads',
@@ -36,114 +29,70 @@ export class Chat implements OnInit {
     'Explain the MCTS tree structure for LNP design',
   ];
 
-  constructor(private api: ApiService, private cdr: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.loadConversations();
-    if (this.conversations.length === 0) {
-      this.newConversation();
-    } else {
-      this.loadConversation(this.conversations[0].id);
-    }
-  }
-
-  newConversation() {
-    const id = Date.now().toString();
-    const conv: Conversation = {
-      id,
-      title: 'New Conversation',
-      messages: [],
-      timestamp: Date.now(),
-    };
-    this.conversations.unshift(conv);
-    this.currentConversationId = id;
-    this.messages = [];
-    this.saveConversations();
-  }
-
-  loadConversation(id: string) {
-    const conv = this.conversations.find(c => c.id === id);
-    if (conv) {
-      this.currentConversationId = id;
-      this.messages = conv.messages;
+  constructor(private api: ApiService, private cdr: ChangeDetectorRef, public convService: ConversationService) {
+    effect(() => {
+      const conv = this.convService.current();
+      this.messages = conv ? [...conv.messages] : [];
       this.scrollToBottom();
+    });
+  }
+
+  onFilesSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      this.attachedFiles = [...this.attachedFiles, ...Array.from(input.files)];
+      input.value = '';
     }
   }
 
-  deleteConversation(id: string, event: Event) {
-    event.stopPropagation();
-    this.conversations = this.conversations.filter(c => c.id !== id);
-    if (this.currentConversationId === id) {
-      if (this.conversations.length > 0) {
-        this.loadConversation(this.conversations[0].id);
-      } else {
-        this.newConversation();
-      }
-    }
-    this.saveConversations();
-  }
+  removeFile(index: number) { this.attachedFiles.splice(index, 1); }
 
-  private loadConversations() {
-    const stored = localStorage.getItem('lnp_conversations');
-    if (stored) {
-      this.conversations = JSON.parse(stored);
-      // Keep only last 10
-      this.conversations = this.conversations.slice(0, 10);
-    }
-  }
-
-  private saveConversations() {
-    // Keep only last 10 conversations
-    this.conversations = this.conversations.slice(0, 10);
-    localStorage.setItem('lnp_conversations', JSON.stringify(this.conversations));
-  }
-
-  private updateCurrentConversation() {
-    const conv = this.conversations.find(c => c.id === this.currentConversationId);
-    if (conv) {
-      conv.messages = this.messages;
-      conv.timestamp = Date.now();
-      // Update title from first user message
-      const firstUser = this.messages.find(m => m.role === 'user');
-      if (firstUser) {
-        conv.title = firstUser.content.slice(0, 50) + (firstUser.content.length > 50 ? '...' : '');
-      }
-      this.saveConversations();
-    }
+  formatFileSize(bytes: number): string {
+    if (bytes < 1024) return bytes + 'B';
+    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + 'KB';
+    return (bytes / 1048576).toFixed(1) + 'MB';
   }
 
   sendMessage(text: string) {
-    if (!text.trim() || this.loading) return;
+    if ((!text.trim() && this.attachedFiles.length === 0) || this.loading) return;
     this.messages.push({ role: 'user', content: text });
-    this.updateCurrentConversation();
+    this.convService.updateCurrent(this.messages);
     this.inputText = '';
     this.loading = true;
     this.statusMessage = 'Thinking...';
 
-    this.api.chatStream(
-      text,
-      (status) => {
-        this.statusMessage = status;
-        this.cdr.markForCheck();
-      },
-      (answer) => {
+    const files = [...this.attachedFiles];
+    this.attachedFiles = [];
+
+    const callbacks = {
+      onStatus: (status: string) => { this.statusMessage = status; this.cdr.markForCheck(); },
+      onAnswer: (answer: string) => {
         this.messages.push({ role: 'assistant', content: answer });
-        this.updateCurrentConversation();
+        this.convService.updateCurrent(this.messages);
         this.cdr.markForCheck();
         this.scrollToBottom();
       },
-      (details) => {
+      onDetails: (details: any) => {
         const last = this.messages[this.messages.length - 1];
         if (last?.role === 'assistant') last.details = details;
-        this.updateCurrentConversation();
+        this.convService.updateCurrent(this.messages);
         this.cdr.markForCheck();
       },
-      () => {
-        this.loading = false;
+      onError: (err: string) => {
+        this.messages.push({ role: 'assistant', content: `⚠️ ${err}` });
+        this.convService.updateCurrent(this.messages);
         this.cdr.markForCheck();
         this.scrollToBottom();
-      }
-    );
+      },
+      onDone: () => { this.loading = false; this.cdr.markForCheck(); this.scrollToBottom(); },
+    };
+
+    // Pass existing messages so the backend gets conversation history
+    if (files.length > 0) {
+      this.api.chatStreamWithFiles(text, files, this.messages, callbacks.onStatus, callbacks.onAnswer, callbacks.onDetails, callbacks.onError, callbacks.onDone);
+    } else {
+      this.api.chatStream(text, this.messages, callbacks.onStatus, callbacks.onAnswer, callbacks.onDetails, callbacks.onError, callbacks.onDone);
+    }
     this.scrollToBottom();
   }
 
@@ -153,17 +102,6 @@ export class Chat implements OnInit {
 
   renderMd(text: string): string {
     return marked.parse(text, { async: false }) as string;
-  }
-
-  formatDate(timestamp: number): string {
-    const date = new Date(timestamp);
-    const now = new Date();
-    const diff = now.getTime() - date.getTime();
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    if (days === 0) return 'Today';
-    if (days === 1) return 'Yesterday';
-    if (days < 7) return `${days} days ago`;
-    return date.toLocaleDateString();
   }
 
   private scrollToBottom() {

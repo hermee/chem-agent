@@ -84,7 +84,8 @@
               "buildTarget": "reactome-ui:build:production"
             },
             "development": {
-              "buildTarget": "reactome-ui:build:development"
+              "buildTarget": "reactome-ui:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

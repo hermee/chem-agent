@@ -1,6 +1,6 @@
 <nav class="w-64 min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white flex flex-col">
   <div class="p-6 border-b border-slate-700">
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 cursor-pointer" routerLink="/">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-lg font-bold">🧬</div>
       <div>
         <h1 class="text-lg font-bold tracking-tight">Reactome</h1>
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="flex-1 p-4 space-y-1">
+  <div class="p-4 space-y-1">
     @for (item of navItems; track item.route) {
       <a [routerLink]="item.route" routerLinkActive="bg-slate-700/60 text-emerald-400"
          class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm text-slate-300 hover:bg-slate-700/40 hover:text-white transition-all cursor-pointer">
@@ -17,6 +17,32 @@
         <span>{{ item.label }}</span>
       </a>
     }
+  </div>
+
+  <!-- History Section -->
+  <div class="flex-1 flex flex-col border-t border-slate-700 mt-2 min-h-0">
+    <div class="px-4 pt-4 pb-2 flex items-center justify-between">
+      <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">History</span>
+      <button (click)="convService.newConversation()"
+        class="text-xs px-2 py-1 rounded-md bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 transition-all">
+        + New
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto px-3 pb-3 space-y-1">
+      @for (conv of convService.conversations(); track conv.id) {
+        <div (click)="convService.select(conv.id)"
+          class="group flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-all text-sm"
+          [class]="convService.currentId() === conv.id ? 'bg-slate-700/60 text-emerald-400' : 'text-slate-400 hover:bg-slate-700/40 hover:text-white'">
+          <span class="text-xs">💬</span>
+          <div class="flex-1 min-w-0">
+            <div class="truncate text-xs">{{ conv.title }}</div>
+            <div class="text-[10px] opacity-60">{{ convService.formatDate(conv.timestamp) }}</div>
+          </div>
+          <button (click)="convService.delete(conv.id); $event.stopPropagation()"
+            class="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-red-400 text-xs transition-opacity">✕</button>
+        </div>
+      }
+    </div>
   </div>
 
   <div class="p-4 border-t border-slate-700">

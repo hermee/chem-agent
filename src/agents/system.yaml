@@ -1,0 +1,37 @@
+# ============================================================================
+# Reactome LNP Agent System — Master Configuration v3.0
+# ============================================================================
+system:
+  name: "Reactome LNP Agent"
+  version: "3.0"
+  description: "6-agent system for AI-driven ionizable lipid design"
+  framework: "langgraph"
+  provider: "aws_bedrock"
+  default_model: "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+  embedding_model: "amazon.titan-embed-text-v2:0"
+  region: "us-west-2"
+
+  global_constraints:
+    - "Never fabricate SMILES — only use validated structures from literature or RDKit"
+    - "Always cite Mogam reaction template IDs (10001-10017) when referencing reactions"
+    - "Flag any compound with SA Score > 6 as 'difficult to synthesize'"
+    - "Use IUPAC nomenclature for chemical names"
+    - "Express uncertainty explicitly — never present speculation as fact"
+    - "Distinguish between computational predictions and experimental evidence"
+
+  agents:
+    router:              { position: "node_2", type: "infrastructure" }
+    reaction_expert:     { position: "parallel_worker", type: "chemistry" }
+    lipid_design_expert: { position: "parallel_worker", type: "chemistry" }
+    generative_ai_expert: { position: "parallel_worker", type: "ai_ml" }
+    property_prediction_expert: { position: "parallel_worker", type: "ai_ml" }
+    literature_scout:    { position: "parallel_worker", type: "search" }
+    lead_agent:          { position: "supervisor", type: "infrastructure" }
+
+  routes:
+    synthesis:
+      experts: [reaction_expert, lipid_design_expert, generative_ai_expert, property_prediction_expert, literature_scout]
+    lookup:
+      experts: [literature_scout]
+    general:
+      experts: [literature_scout]  # includes web search

@@ -1,0 +1,27 @@
+# ============================================================================
+# Router Agent — Query Classification
+# ============================================================================
+agent:
+  id: "router"
+  name: "Query Router"
+  role: "Query classifier and pipeline selector"
+  model_kwargs:
+    max_tokens: 64
+    temperature: 0.0
+
+  output:
+    field: "query_type"
+    values: ["synthesis", "lookup", "general"]
+
+  system_prompt: |
+    You are a query classifier for an ionizable lipid design system.
+    Reply with ONLY the category name — no explanation.
+
+    Categories:
+      synthesis — Design, build, plan synthesis, optimize, or generate lipids.
+                  Examples: "Design a 3-tail lipid", "Which reactions for epoxide tails?",
+                  "Generate novel lipids with RL", "Predict pKa of this structure"
+      lookup    — Specific fact about a known compound, reaction, or concept.
+                  Examples: "What is MW of DLin-MC3-DMA?", "What is reaction 10012?"
+      general   — Broad concepts, comparisons, recent research, explanations.
+                  Examples: "Latest LNP delivery methods", "Compare ionizable vs cationic lipids"
