@@ -76,9 +76,9 @@
 2. **Identical UI** — The Dioxus apps must replicate the Angular frontend pixel-for-pixel: same layout, colors, components, interactions, and responsive behavior.
 3. **Purpose** — Compare framework performance (Angular vs Dioxus WASM vs Dioxus native) with identical UI and backend, isolating only the frontend runtime as the variable.
 4. **Framework** — Both standalone apps are built with **Dioxus**:
-   - `standalone/` — Dioxus WASM, compiled with Trunk, served via Python HTTP server
-   - `standalone-desktop/` — Dioxus desktop (wry/tao), native GUI app, primarily for **macOS** users but cross-platform (Linux/Windows)
-5. **Feature parity** — Must support all features: SSE chat streaming, conversation persistence, expert detail panels, reaction browser, workflow visualization, file upload, SMILES analysis.
+   - `standalone/` — Dioxus web (WASM), compiled with Trunk, served via Python HTTP server
+   - `standalone-desktop/` — Dioxus desktop, native cross-platform GUI app (macOS, Linux, Windows)
+5. **Feature parity** — Must support all features the Angular frontend has: SSE chat streaming, conversation persistence, expert detail panels, reaction browser, workflow visualization, file upload, SMILES analysis.
 
 ### Current Status
 
