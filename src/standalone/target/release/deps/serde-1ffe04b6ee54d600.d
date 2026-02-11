@@ -1,0 +1,14 @@
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/deps/libserde-1ffe04b6ee54d600.rmeta: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/build/serde-a8f88973c1467ef1/out/private.rs
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/deps/libserde-1ffe04b6ee54d600.rlib: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/build/serde-a8f88973c1467ef1/out/private.rs
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/deps/serde-1ffe04b6ee54d600.d: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/build/serde-a8f88973c1467ef1/out/private.rs
+
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/build/serde-a8f88973c1467ef1/out/private.rs:
+
+# env-dep:OUT_DIR=/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/release/build/serde-a8f88973c1467ef1/out

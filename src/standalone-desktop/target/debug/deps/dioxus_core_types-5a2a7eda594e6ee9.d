@@ -1,0 +1,9 @@
+/fsx/home/hermee/projects/python/chem-agent/src/standalone-desktop/target/debug/deps/libdioxus_core_types-5a2a7eda594e6ee9.rmeta: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/bubbles.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/bundled.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/formatter.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/hr_context.rs
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone-desktop/target/debug/deps/dioxus_core_types-5a2a7eda594e6ee9.d: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/bubbles.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/bundled.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/formatter.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/hr_context.rs
+
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/lib.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/bubbles.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/bundled.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/formatter.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/dioxus-core-types-0.6.2/src/hr_context.rs:

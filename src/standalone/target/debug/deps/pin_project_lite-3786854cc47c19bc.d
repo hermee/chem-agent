@@ -1,0 +1,7 @@
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/debug/deps/libpin_project_lite-3786854cc47c19bc.rmeta: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pin-project-lite-0.2.16/src/lib.rs
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/debug/deps/libpin_project_lite-3786854cc47c19bc.rlib: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pin-project-lite-0.2.16/src/lib.rs
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/debug/deps/pin_project_lite-3786854cc47c19bc.d: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pin-project-lite-0.2.16/src/lib.rs
+
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pin-project-lite-0.2.16/src/lib.rs:

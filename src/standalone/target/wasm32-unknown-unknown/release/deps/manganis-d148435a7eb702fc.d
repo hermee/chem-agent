@@ -1,0 +1,10 @@
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/wasm32-unknown-unknown/release/deps/libmanganis-d148435a7eb702fc.rmeta: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/hash.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/macro_helpers.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/../README.md
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/wasm32-unknown-unknown/release/deps/libmanganis-d148435a7eb702fc.rlib: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/hash.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/macro_helpers.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/../README.md
+
+/fsx/home/hermee/projects/python/chem-agent/src/standalone/target/wasm32-unknown-unknown/release/deps/manganis-d148435a7eb702fc.d: /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/lib.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/hash.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/macro_helpers.rs /fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/../README.md
+
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/lib.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/hash.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/macro_helpers.rs:
+/fsx/home/hermee/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/manganis-0.6.2/src/../README.md:
