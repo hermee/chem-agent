@@ -2,14 +2,14 @@
 from typing import TypedDict
 from langchain_aws import ChatBedrock
 from langgraph.graph import StateGraph, START, END
-from .config import AWS_REGION, BEDROCK_MODEL_ID
+from .config import AWS_REGION, BEDROCK_MODEL_ID, BEDROCK_FAST_MODEL_ID
 from .rag import retriever
 from .tools import search_pubmed, search_pubchem, search_web
 from ..agents import get_system_prompt
 
 llm = ChatBedrock(model_id=BEDROCK_MODEL_ID, region_name=AWS_REGION, streaming=True)
-llm_fast = ChatBedrock(model_id=BEDROCK_MODEL_ID, region_name=AWS_REGION, streaming=True,
-                       model_kwargs={"max_tokens": 1024})
+llm_fast = ChatBedrock(model_id=BEDROCK_FAST_MODEL_ID or BEDROCK_MODEL_ID, region_name=AWS_REGION,
+                       streaming=True, model_kwargs={"max_tokens": 1024})
 
 QUERY_TYPES = ["synthesis", "lookup", "general"]
 

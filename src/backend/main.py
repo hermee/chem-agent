@@ -14,7 +14,7 @@ sys.path.append(os.path.join(RDConfig.RDContribDir, 'SA_Score'))
 import sascorer
 
 from .agent import run_agent, graph, ReactomeState
-from .config import BEDROCK_MODEL_ID, AWS_REGION
+from .config import BEDROCK_MODEL_ID, BEDROCK_FAST_MODEL_ID, AWS_REGION
 
 app = FastAPI(title="Reactome LNP Agent API", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -52,7 +52,7 @@ class SmilesRequest(BaseModel):
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "model": BEDROCK_MODEL_ID, "region": AWS_REGION}
+    return {"status": "ok", "model": BEDROCK_MODEL_ID, "fast_model": BEDROCK_FAST_MODEL_ID, "region": AWS_REGION}
 
 
 @app.get("/api/reactions")

@@ -90,9 +90,9 @@ pub struct WorkflowStep {
 
 pub const WORKFLOW_STEPS: &[WorkflowStep] = &[
     WorkflowStep { icon: "❓", title: "User Query", description: "Natural language question about ionizable lipid design", color: "linear-gradient(135deg, #10b981, #06b6d4)", parallel: false },
-    WorkflowStep { icon: "🔄", title: "Query Rewrite", description: "Rewrites question to be self-contained using chat history", color: "linear-gradient(135deg, #64748b, #94a3b8)", parallel: false },
-    WorkflowStep { icon: "🧭", title: "Router", description: "Classifies query as synthesis, lookup, or general", color: "linear-gradient(135deg, #3b82f6, #6366f1)", parallel: false },
-    WorkflowStep { icon: "🔍", title: "FAISS Retrieval + Rerank", description: "454 vectors searched — papers, rules, reaction templates, compound data", color: "linear-gradient(135deg, #3b82f6, #6366f1)", parallel: false },
+    WorkflowStep { icon: "🔄", title: "Query Rewrite", description: "Rewrites question to be self-contained using chat history (Claude 3.5 Haiku)", color: "linear-gradient(135deg, #64748b, #94a3b8)", parallel: false },
+    WorkflowStep { icon: "🧭", title: "Router", description: "Classifies query as synthesis, lookup, or general (Claude 3.5 Haiku)", color: "linear-gradient(135deg, #3b82f6, #6366f1)", parallel: false },
+    WorkflowStep { icon: "🔍", title: "FAISS Retrieval + Rerank", description: "454 vectors searched + LLM reranking (Claude 3.5 Haiku)", color: "linear-gradient(135deg, #3b82f6, #6366f1)", parallel: false },
     WorkflowStep { icon: "⚗️", title: "Reaction Expert", description: "SMARTS template matching, functional group analysis, feasibility", color: "linear-gradient(135deg, #8b5cf6, #a855f7)", parallel: true },
     WorkflowStep { icon: "🧬", title: "Lipid Design Expert", description: "Retrosynthesis routes, SAR analysis, design rule compliance", color: "linear-gradient(135deg, #8b5cf6, #a855f7)", parallel: true },
     WorkflowStep { icon: "🤖", title: "Generative AI Expert", description: "De novo generation models, RL optimization, reward functions", color: "linear-gradient(135deg, #8b5cf6, #a855f7)", parallel: true },

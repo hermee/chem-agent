@@ -8,6 +8,7 @@ system:
   framework: "langgraph"
   provider: "aws_bedrock"
   default_model: "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+  fast_model: "us.anthropic.claude-3-5-haiku-20241022-v1:0"
   embedding_model: "amazon.titan-embed-text-v2:0"
   region: "us-west-2"
 
