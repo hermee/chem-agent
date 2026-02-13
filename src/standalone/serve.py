@@ -18,6 +18,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIR, **kwargs)
 
+    def end_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        super().end_headers()
+
     def do_GET(self):
         # SPA fallback: serve index.html for paths that don't match a file
         path = os.path.join(DIR, self.path.lstrip("/"))

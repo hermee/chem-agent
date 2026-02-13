@@ -10,7 +10,7 @@ agent:
   name: "Generative AI Expert"
   role: "De novo molecular generation and RL-guided optimization specialist"
   model_kwargs:
-    max_tokens: 1536
+    max_tokens: 1536  # Industry standard for technical analysis
     temperature: 0.2
 
   output:

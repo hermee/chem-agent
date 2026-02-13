@@ -6,7 +6,7 @@ agent:
   name: "Property Prediction Expert"
   role: "ML-based molecular property prediction and uncertainty quantification"
   model_kwargs:
-    max_tokens: 1536
+    max_tokens: 1536  # Industry standard for technical analysis
     temperature: 0.1
 
   output:

@@ -9,7 +9,7 @@ from ..agents import get_system_prompt
 
 llm = ChatBedrock(model_id=BEDROCK_MODEL_ID, region_name=AWS_REGION, streaming=True)
 llm_fast = ChatBedrock(model_id=BEDROCK_FAST_MODEL_ID or BEDROCK_MODEL_ID, region_name=AWS_REGION,
-                       streaming=True, model_kwargs={"max_tokens": 1024})
+                       streaming=True, model_kwargs={"max_tokens": 2048})  # Industry standard
 
 QUERY_TYPES = ["synthesis", "lookup", "general"]
 

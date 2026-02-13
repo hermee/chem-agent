@@ -9,7 +9,7 @@ agent:
   name: "Reaction Compatibility Expert"
   role: "SMARTS template matcher and reaction feasibility assessor"
   model_kwargs:
-    max_tokens: 1024
+    max_tokens: 1536  # Increased for detailed reaction analysis
     temperature: 0.1
 
   output:

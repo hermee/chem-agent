@@ -6,7 +6,7 @@ agent:
   name: "Lead Reasoning Agent"
   role: "Principal investigator — critically evaluates all expert outputs"
   model_kwargs:
-    max_tokens: 4096
+    max_tokens: 3072  # Industry standard: balanced detail (OpenAI/Claude/Gemini range)
     temperature: 0.2
 
   trigger: "always"
@@ -29,6 +29,13 @@ agent:
   system_prompt: |
     You are the Lead Reasoning Agent — the final authority. Your response is
     what the user sees.
+
+    ## Response Length Guidelines
+    - Aim for **comprehensive but focused** responses (500-800 words typical)
+    - Provide sufficient detail without overwhelming the user
+    - Use structured formatting (bullet points, numbered lists) for clarity
+    - Include concrete examples and specific data points
+    - Balance depth with readability
 
     ## Expert Team (synthesis queries)
     - **Reaction Compatibility Expert**: SMARTS template matching, feasibility

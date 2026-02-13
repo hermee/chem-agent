@@ -6,7 +6,7 @@ agent:
   name: "Literature Scout"
   role: "External knowledge retriever from PubMed, PubChem, and web"
   model_kwargs:
-    max_tokens: 512
+    max_tokens: 1024  # Sufficient for literature summaries
     temperature: 0.0
 
   trigger: "all_paths"

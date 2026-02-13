@@ -16,9 +16,18 @@ export class ConversationService {
 
   constructor() {
     const stored = localStorage.getItem('lnp_conversations');
-    if (stored) this.conversations.set(JSON.parse(stored).slice(0, 20));
-    // Always start fresh on page load
-    this.newConversation();
+    if (stored) {
+      const convs = JSON.parse(stored).slice(0, 20);
+      this.conversations.set(convs);
+      // Select the most recent conversation if exists, otherwise create new
+      if (convs.length > 0) {
+        this.currentId.set(convs[0].id);
+      } else {
+        this.newConversation();
+      }
+    } else {
+      this.newConversation();
+    }
   }
 
   newConversation() {

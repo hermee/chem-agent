@@ -77,6 +77,7 @@ pub struct AnalysisError { pub error: Option<String> }
 pub struct HealthResponse {
     pub status: String,
     pub model: Option<String>,
+    pub fast_model: Option<String>,
     pub region: Option<String>,
 }
 

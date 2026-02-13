@@ -20,7 +20,7 @@ echo "  Backend PID: $BACKEND_PID → http://localhost:8000/docs"
 # Start frontend
 echo "Starting frontend (Angular)..."
 cd src/frontend/reactome-ui
-ng serve --port 4200 --open &
+ng serve --host 0.0.0.0 --port 4200 &
 FRONTEND_PID=$!
 echo "  Frontend PID: $FRONTEND_PID → http://localhost:4200"
 

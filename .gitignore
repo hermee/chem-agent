@@ -19,10 +19,10 @@ node_modules/
 src/frontend/reactome-ui/dist/
 
 # Rust / Dioxus
-standalone-desktop/target/
-standalone-desktop/frontend/
-standalone/target/
-standalone/dist/
+src/standalone-desktop/target/
+src/standalone-desktop/frontend/
+src/standalone/target/
+src/standalone/dist/
 
 # IDE
 .idea/
@@ -45,6 +45,9 @@ downloads/
 
 # Python lock (uv)
 uv.lock
+
+# Pytest
+.pytest_cache/
 
 # Keep Cargo.lock for applications
 # (Rust best practice: commit for binaries, ignore for libraries)

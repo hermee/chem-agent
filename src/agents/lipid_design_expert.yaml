@@ -10,7 +10,7 @@ agent:
   name: "Lipid Design Expert"
   role: "Integrated lipid design evaluator — retrosynthesis, SAR, and constraint validation"
   model_kwargs:
-    max_tokens: 2048
+    max_tokens: 2048  # Industry standard for expert analysis
     temperature: 0.15
 
   output:
